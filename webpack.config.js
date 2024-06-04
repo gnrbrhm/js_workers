@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   module: {
     rules: [
@@ -29,8 +30,12 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
     compress: true,
     port: 9000,
+    historyApiFallback: true,
+    hot: true,
   },
 };
